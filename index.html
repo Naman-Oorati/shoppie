@@ -6,612 +6,753 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- 
-    - primary meta tags
-  -->
-  <title>Shoppie - Man summer collection</title>
-  <meta name="title" content="Shoppie - Man summer collection">
-  <meta name="description" content="This is an eCommerce html template made by codewithsadee">
+  <!-- Primary meta tags -->
+  <title>VehicleAI Pro - Advanced Vehicle Health Diagnostics</title>
+  <meta name="title" content="VehicleAI Pro - Advanced Vehicle Health Diagnostics">
+  <meta name="description" content="Professional AI-powered vehicle health diagnostics and predictive maintenance platform">
 
-  <!-- 
-    - favicon
-  -->
+  <!-- Favicon -->
   <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
 
-  <!-- 
-    - google font link
-  -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./assets/fonts/font.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- 
-    - custom css link
-  -->
-  <link rel="stylesheet" href="./assets/css/style.css">
+  <!-- Custom CSS -->
+  <style>
+    :root {
+      --primary-color: #2563eb;
+      --primary-dark: #1d4ed8;
+      --secondary-color: #f1f5f9;
+      --accent-color: #10b981;
+      --warning-color: #f59e0b;
+      --danger-color: #ef4444;
+      --text-primary: #0f172a;
+      --text-secondary: #64748b;
+      --text-light: #94a3b8;
+      --border-color: #e2e8f0;
+      --bg-primary: #ffffff;
+      --bg-secondary: #f8fafc;
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+      --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+      --radius: 0.75rem;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
-  <!-- 
-    - preload images
-  -->
-  <link rel="preload" as="image" href="./assets/images/hero-banner.png">
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 3rem;
+      color: white;
+    }
+
+    .header h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      text-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .header p {
+      font-size: 1.25rem;
+      opacity: 0.9;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .main-card {
+      background: var(--bg-primary);
+      border-radius: 2rem;
+      box-shadow: var(--shadow-xl);
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .card-header {
+      background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .card-header h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-header p {
+      opacity: 0.9;
+      font-size: 1.1rem;
+    }
+
+    .diagnostic-form {
+      padding: 3rem;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .form-group {
+      position: relative;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.75rem;
+      font-size: 1.1rem;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 1rem 1.25rem;
+      border: 2px solid var(--border-color);
+      border-radius: var(--radius);
+      font-size: 1.1rem;
+      transition: var(--transition);
+      background: var(--bg-secondary);
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+      background: var(--bg-primary);
+    }
+
+    .unit {
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-light);
+      font-weight: 500;
+      pointer-events: none;
+    }
+
+    .predict-btn {
+      width: 100%;
+      background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+      color: white;
+      border: none;
+      padding: 1.25rem 2rem;
+      border-radius: var(--radius);
+      font-size: 1.2rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      box-shadow: var(--shadow-md);
+    }
+
+    .predict-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .predict-btn:active {
+      transform: translateY(0);
+    }
+
+    .predict-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .results-section {
+      margin-top: 3rem;
+      padding-top: 3rem;
+      border-top: 2px solid var(--border-color);
+    }
+
+    .result-card {
+      background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+      border: 2px solid #0284c7;
+      border-radius: var(--radius);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .result-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 1.5rem;
+      background: var(--accent-color);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: white;
+    }
+
+    .result-status {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--accent-color);
+      margin-bottom: 1rem;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .result-confidence {
+      background: rgba(16, 185, 129, 0.1);
+      color: var(--accent-color);
+      padding: 0.5rem 1rem;
+      border-radius: 2rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+
+    .maintenance-section {
+      background: var(--bg-secondary);
+      border-radius: var(--radius);
+      padding: 2rem;
+    }
+
+    .maintenance-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .maintenance-list {
+      list-style: none;
+    }
+
+    .maintenance-item {
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      transition: var(--transition);
+    }
+
+    .maintenance-item:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+
+    .maintenance-icon {
+      width: 50px;
+      height: 50px;
+      background: var(--warning-color);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.25rem;
+    }
+
+    .maintenance-content {
+      flex: 1;
+    }
+
+    .maintenance-task {
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.25rem;
+    }
+
+    .maintenance-priority {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    .priority-high {
+      color: var(--danger-color);
+      font-weight: 600;
+    }
+
+    .priority-medium {
+      color: var(--warning-color);
+      font-weight: 600;
+    }
+
+    .priority-low {
+      color: var(--accent-color);
+      font-weight: 600;
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .metric-card {
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      text-align: center;
+      transition: var(--transition);
+    }
+
+    .metric-card:hover {
+      box-shadow: var(--shadow-md);
+    }
+
+    .metric-value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+    }
+
+    .metric-label {
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .loading {
+      display: none;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      margin: 2rem 0;
+    }
+
+    .loading.show {
+      display: flex;
+    }
+
+    .spinner {
+      width: 24px;
+      height: 24px;
+      border: 3px solid var(--border-color);
+      border-top: 3px solid var(--primary-color);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 1rem;
+      }
+
+      .header h1 {
+        font-size: 2.5rem;
+      }
+
+      .diagnostic-form {
+        padding: 2rem;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <div class="container">
+    <header class="header">
+      <h1>VehicleAI Pro</h1>
+      <p>Advanced AI-Powered Vehicle Health Diagnostics & Predictive Maintenance</p>
+    </header>
 
-  <!-- 
-    - #HEADER
-  -->
-
-  <header class="header" data-header>
-    <div class="container">
-
-      <a href="#" class="logo">
-        <img src="./assets/images/logo.svg" width="132" height="27" alt="shoppie home">
-      </a>
-
-      <nav class="navbar" data-navbar>
-        <ul class="navbar-list">
-
-          <li>
-            <a href="#" class="navbar-link">Home</a>
-          </li>
-
-          <li>
-            <a href="#" class="navbar-link">Portfolio</a>
-          </li>
-
-          <li>
-            <a href="#" class="navbar-link">Blog</a>
-          </li>
-
-          <li>
-            <a href="#" class="navbar-link">Shop</a>
-          </li>
-
-        </ul>
-
-        <button class="cart-btn">
-          <ion-icon name="bag" aria-hidden="true"></ion-icon>
-
-          <span class="span">Cart (02)</span>
-        </button>
-
-        <a href="#" class="btn">Contact Us</a>
-      </nav>
-
-      <button class="nav-open-btn" aria-label="toggle menu" data-nav-toggler>
-        <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
-      </button>
-
-    </div>
-  </header>
-
-
-
-
-
-  <main>
-    <article>
-
-      <!-- 
-        - #HERO
-      -->
-
-      <div class="hero">
-        <div class="container">
-
-          <div class="hero-content">
-
-            <p class="hero-subtitle title">$120.00</p>
-
-            <h1 class="h1 hero-title title">Man summer <br> collection</h1>
-
-            <p class="hero-text">
-              This is the factor that sets us apart from competition and allows us deliver a specialist business service
-              team applies its ranging experience determining
-            </p>
-
-            <a href="#" class="btn btn-primary">
-              <span class="span">Shop Now</span>
-
-              <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
-            </a>
-
-          </div>
-
-          <div class="hero-banner">
-            <figure class="img-holder" style="--width: 704; --height: 700;">
-              <img src="./assets/images/hero-banner.png" width="704" height="700" alt="hero banner" class="img-cover">
-            </figure>
-
-            <img src="./assets/images/hero-shape-1.png" width="255" height="249" alt="shape" class="shape shape-1">
-          </div>
-
-          <img src="./assets/images/hero-shape-2.png" width="360" height="133" alt="shape" class="shape shape-2">
-
-        </div>
+    <main class="main-card">
+      <div class="card-header">
+        <h2>Vehicle Health Analysis</h2>
+        <p>Enter your vehicle's diagnostic data for AI-powered health assessment</p>
       </div>
 
-
-
-
-
-      <!-- 
-        - #PRODUCT
-      -->
-
-      <section class="section product" aria-label="product">
-        <div class="container">
-
-          <h2 class="h2 section-title title text-center">Explore new arrivals</h2>
-
-          <ul class="product-list has-scrollbar">
-
-            <li class="scrollbar-item">
-              <div class="product-card text-center">
-
-                <div class="card-banner">
-
-                  <figure class="product-banner img-holder" style="--width: 448; --height: 470;">
-                    <img src="./assets/images/product-1.png" width="448" height="470" loading="lazy"
-                      alt="Short Sleeve Shirt" class="img-cover">
-                  </figure>
-
-                  <a href="#" class="btn product-btn">
-                    <ion-icon name="bag" aria-hidden="true"></ion-icon>
-
-                    <span class="span">Add To Cart</span>
-                  </a>
-
-                </div>
-
-                <div class="card-content">
-
-                  <h3 class="h4 title">
-                    <a href="#" class="card-title">Short Sleeve Shirt</a>
-                  </h3>
-
-                  <span class="price">$170.00</span>
-
-                </div>
-
+      <div class="diagnostic-form">
+        <form id="diagnosticForm">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="engineTemp">Engine Temperature</label>
+              <div style="position: relative;">
+                <input type="number" id="engineTemp" name="engineTemp" class="form-input" 
+                       placeholder="Enter temperature" min="0" max="150" required>
+                <span class="unit">°C</span>
               </div>
-            </li>
+            </div>
 
-            <li class="scrollbar-item">
-              <div class="product-card text-center">
-
-                <div class="card-banner">
-
-                  <figure class="product-banner img-holder" style="--width: 448; --height: 470;">
-                    <img src="./assets/images/product-2.png" width="448" height="470" loading="lazy"
-                      alt="Dead Sunglasses" class="img-cover">
-                  </figure>
-
-                  <a href="#" class="btn product-btn">
-                    <ion-icon name="bag" aria-hidden="true"></ion-icon>
-
-                    <span class="span">Add To Cart</span>
-                  </a>
-
-                </div>
-
-                <div class="card-content">
-
-                  <h3 class="h4 title">
-                    <a href="#" class="card-title">Dead Sunglasses</a>
-                  </h3>
-
-                  <span class="price">$210.00</span>
-
-                </div>
-
+            <div class="form-group">
+              <label for="batteryVoltage">Battery Voltage</label>
+              <div style="position: relative;">
+                <input type="number" id="batteryVoltage" name="batteryVoltage" class="form-input" 
+                       placeholder="Enter voltage" min="0" max="20" step="0.1" required>
+                <span class="unit">V</span>
               </div>
-            </li>
+            </div>
 
-            <li class="scrollbar-item">
-              <div class="product-card text-center">
-
-                <div class="card-banner">
-
-                  <figure class="product-banner img-holder" style="--width: 448; --height: 470;">
-                    <img src="./assets/images/product-3.png" width="448" height="470" loading="lazy"
-                      alt="Studios Trouser" class="img-cover">
-                  </figure>
-
-                  <a href="#" class="btn product-btn">
-                    <ion-icon name="bag" aria-hidden="true"></ion-icon>
-
-                    <span class="span">Add To Cart</span>
-                  </a>
-
-                </div>
-
-                <div class="card-content">
-
-                  <h3 class="h4 title">
-                    <a href="#" class="card-title">Studios Trouser</a>
-                  </h3>
-
-                  <span class="price">$90.00</span>
-
-                </div>
-
+            <div class="form-group">
+              <label for="oilLevel">Oil Level</label>
+              <div style="position: relative;">
+                <input type="number" id="oilLevel" name="oilLevel" class="form-input" 
+                       placeholder="Enter oil level" min="0" max="100" required>
+                <span class="unit">%</span>
               </div>
-            </li>
+            </div>
 
-          </ul>
-
-        </div>
-      </section>
-
-
-
-
-
-      <!-- 
-        - #FEATURE
-      -->
-
-      <section class="section feature" aria-label="feature-label">
-        <div class="container">
-
-          <h2 class="h2 section-title title text-center" id="feature-label">Featured products</h2>
-
-          <ul class="feature-list">
-
-            <li>
-              <div class="product-card text-center">
-
-                <div class="card-banner">
-
-                  <figure class="product-banner img-holder" style="--width: 448; --height: 470;">
-                    <img src="./assets/images/product-4.png" width="448" height="470" loading="lazy"
-                      alt="Acne Baseball Cap" class="img-cover">
-                  </figure>
-
-                  <a href="#" class="btn product-btn">
-                    <ion-icon name="bag" aria-hidden="true"></ion-icon>
-
-                    <span class="span">Add To Cart</span>
-                  </a>
-
-                </div>
-
-                <div class="card-content">
-                  <h3 class="h3 title">
-                    <a href="#" class="card-title">Acne Baseball Cap</a>
-                  </h3>
-
-                  <span class="price">$80.00</span>
-                </div>
-
+            <div class="form-group">
+              <label for="tirePressure">Tire Pressure</label>
+              <div style="position: relative;">
+                <input type="number" id="tirePressure" name="tirePressure" class="form-input" 
+                       placeholder="Enter tire pressure" min="0" max="60" required>
+                <span class="unit">PSI</span>
               </div>
-            </li>
-
-            <li>
-              <div class="product-card text-center">
-
-                <div class="card-banner">
-
-                  <figure class="product-banner img-holder" style="--width: 448; --height: 470;">
-                    <img src="./assets/images/product-5.png" width="448" height="470" loading="lazy"
-                      alt="Short Sleeve Shirt" class="img-cover">
-                  </figure>
-
-                  <a href="#" class="btn product-btn">
-                    <ion-icon name="bag" aria-hidden="true"></ion-icon>
-
-                    <span class="span">Add To Cart</span>
-                  </a>
-
-                </div>
-
-                <div class="card-content">
-                  <h3 class="h3 title">
-                    <a href="#" class="card-title">Short Sleeve Shirt</a>
-                  </h3>
-
-                  <span class="price">$170.00</span>
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="product-card text-center">
-
-                <div class="card-banner">
-
-                  <figure class="product-banner img-holder" style="--width: 448; --height: 470;">
-                    <img src="./assets/images/product-6.png" width="448" height="470" loading="lazy"
-                      alt="Garcons Parfums" class="img-cover">
-                  </figure>
-
-                  <a href="#" class="btn product-btn">
-                    <ion-icon name="bag" aria-hidden="true"></ion-icon>
-
-                    <span class="span">Add To Cart</span>
-                  </a>
-
-                </div>
-
-                <div class="card-content">
-                  <h3 class="h3 title">
-                    <a href="#" class="card-title">Garcons Parfums</a>
-                  </h3>
-
-                  <span class="price">$190.00</span>
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="product-card text-center">
-
-                <div class="card-banner">
-
-                  <figure class="product-banner img-holder" style="--width: 448; --height: 470;">
-                    <img src="./assets/images/product-7.png" width="448" height="470" loading="lazy"
-                      alt="Salomon Sneaker" class="img-cover">
-                  </figure>
-
-                  <a href="#" class="btn product-btn">
-                    <ion-icon name="bag" aria-hidden="true"></ion-icon>
-
-                    <span class="span">Add To Cart</span>
-                  </a>
-
-                </div>
-
-                <div class="card-content">
-                  <h3 class="h3 title">
-                    <a href="#" class="card-title">Salomon Sneaker</a>
-                  </h3>
-
-                  <span class="price">$450.00</span>
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="product-card text-center">
-
-                <div class="card-banner">
-
-                  <figure class="product-banner img-holder" style="--width: 448; --height: 470;">
-                    <img src="./assets/images/product-8.png" width="448" height="470" loading="lazy"
-                      alt="Ribbed Beanie Hat" class="img-cover">
-                  </figure>
-
-                  <a href="#" class="btn product-btn">
-                    <ion-icon name="bag" aria-hidden="true"></ion-icon>
-
-                    <span class="span">Add To Cart</span>
-                  </a>
-
-                </div>
-
-                <div class="card-content">
-                  <h3 class="h3 title">
-                    <a href="#" class="card-title">Ribbed Beanie Hat</a>
-                  </h3>
-
-                  <span class="price">$120.00</span>
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="product-card text-center">
-
-                <div class="card-banner">
-
-                  <figure class="product-banner img-holder" style="--width: 448; --height: 470;">
-                    <img src="./assets/images/product-9.png" width="448" height="470" loading="lazy" alt="Acronym Khaki"
-                      class="img-cover">
-                  </figure>
-
-                  <a href="#" class="btn product-btn">
-                    <ion-icon name="bag" aria-hidden="true"></ion-icon>
-
-                    <span class="span">Add To Cart</span>
-                  </a>
-
-                </div>
-
-                <div class="card-content">
-                  <h3 class="h3 title">
-                    <a href="#" class="card-title">Acronym Khaki</a>
-                  </h3>
-
-                  <span class="price">$220.00</span>
-                </div>
-
-              </div>
-            </li>
-
-          </ul>
-
-          <a href="#" class="btn btn-secondary">View All Products</a>
-
-        </div>
-      </section>
-
-
-
-
-
-      <!-- 
-        - #OFFER
-      -->
-
-      <section class="offer has-bg-image" style="background-image: url('./assets/images/offer-bg.png')">
-        <div class="container">
-
-          <div class="offer-card">
-
-            <h2 class="title card-title">35% Off</h2>
-
-            <p class="card-text">
-              This is the main factor that sets us apart our competition and allows us deliver a specialist business
-              consultancy service
-            </p>
-
-            <a href="#" class="btn btn-secondary">
-              <span class="span">Shop Now</span>
-
-              <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
-            </a>
-
+            </div>
           </div>
 
-        </div>
-      </section>
+          <button type="submit" class="predict-btn" id="predictBtn">
+            <span>🔍 Analyze Vehicle Health</span>
+          </button>
+        </form>
 
-    </article>
-  </main>
-
-
-
-
-
-  <!-- 
-    - #FOOTER
-  -->
-
-  <footer class="footer">
-    <div class="container">
-
-      <div class="footer-top">
-
-        <div class="footer-brand">
-
-          <a href="#" class="logo">
-            <img src="./assets/images/logo.svg" width="132" height="27" loading="lazy" alt="shoppie home">
-          </a>
-
-          <p class="footer-text">
-            Main factor that sets us apart competition allows deliver a specialist business consultancy service applies
-            its ranging experience
-          </p>
-
-          <ul class="social-list">
-
-            <li>
-              <a href="#" class="social-link">
-                <ion-icon name="logo-facebook"></ion-icon>
-              </a>
-            </li>
-
-            <li>
-              <a href="#" class="social-link">
-                <ion-icon name="logo-twitter"></ion-icon>
-              </a>
-            </li>
-
-            <li>
-              <a href="#" class="social-link">
-                <ion-icon name="logo-linkedin"></ion-icon>
-              </a>
-            </li>
-
-          </ul>
-
+        <div class="loading" id="loading">
+          <div class="spinner"></div>
+          <span>Analyzing vehicle data with AI...</span>
         </div>
 
-        <ul class="footer-list">
+        <div class="results-section hidden" id="resultsSection">
+          <div class="result-card">
+            <div class="result-icon">✅</div>
+            <div class="result-status" id="healthStatus">Healthy</div>
+            <div class="result-confidence" id="confidence">Confidence: 95%</div>
+            <p id="statusDescription">Your vehicle is in excellent condition with all systems operating within normal parameters.</p>
+          </div>
 
-          <li>
-            <p class="footer-list-title title">Contact info</p>
+          <div class="metrics-grid">
+            <div class="metric-card">
+              <div class="metric-value" id="overallScore">95</div>
+              <div class="metric-label">Overall Health Score</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-value" id="riskLevel">Low</div>
+              <div class="metric-label">Risk Level</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-value" id="nextService">5,000</div>
+              <div class="metric-label">Miles to Service</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-value" id="estimatedCost">$0</div>
+              <div class="metric-label">Est. Repair Cost</div>
+            </div>
+          </div>
 
-            <address class="footer-text">
-              Neal St, London WC2H 9PR <br>
-              United Kingdom
-            </address>
-          </li>
-
-          <li>
-            <a href="mailto:info.shoppie@support.com" class="email">info.shoppie@support.com</a>
-          </li>
-
-          <li>
-            <a href="tel:+00 123 456 789" class="call">+00 123 456 789</a>
-          </li>
-
-        </ul>
-
-        <div class="footer-list">
-
-          <p class="footer-list-title title">Subscribe newsletter</p>
-
-          <input type="email" name="email_address" placeholder="Enter your email address" required autocomplete="off"
-            class="input-field">
-
-          <button class="btn btn-secondary">Subscribe</button>
-
+          <div class="maintenance-section">
+            <h3 class="maintenance-title">
+              🔧 Maintenance Recommendations
+            </h3>
+            <ul class="maintenance-list" id="maintenanceList">
+              <!-- Maintenance items will be populated by JavaScript -->
+            </ul>
+          </div>
         </div>
-
       </div>
+    </main>
+  </div>
 
-      <div class="footer-bottom">
+  <script>
+    class VehicleDiagnostics {
+      constructor() {
+        this.form = document.getElementById('diagnosticForm');
+        this.loading = document.getElementById('loading');
+        this.resultsSection = document.getElementById('resultsSection');
+        this.predictBtn = document.getElementById('predictBtn');
+        
+        this.bindEvents();
+      }
 
-        <div class="wrapper">
-          <div class="link-wrapper">
+      bindEvents() {
+        this.form.addEventListener('submit', (e) => this.handleSubmit(e));
+      }
 
-            <a href="#" class="footer-bottom-link">Portfolio</a>
-            <a href="#" class="footer-bottom-link">Our Team</a>
-            <a href="#" class="footer-bottom-link">Pricing Plan</a>
-            <a href="#" class="footer-bottom-link">Services</a>
-            <a href="#" class="footer-bottom-link">Contact Us</a>
+      async handleSubmit(e) {
+        e.preventDefault();
+        
+        const formData = new FormData(this.form);
+        const data = {
+          engineTemp: parseFloat(formData.get('engineTemp')),
+          batteryVoltage: parseFloat(formData.get('batteryVoltage')),
+          oilLevel: parseFloat(formData.get('oilLevel')),
+          tirePressure: parseFloat(formData.get('tirePressure'))
+        };
 
-          </div>
+        this.showLoading();
+        
+        // Simulate AI processing
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        
+        const diagnosis = this.analyzeVehicleHealth(data);
+        this.displayResults(diagnosis);
+        this.hideLoading();
+      }
 
-          <div class="link-wrapper">
-            <a href="#" class="footer-bottom-link">Terms & Conditions</a>
+      analyzeVehicleHealth(data) {
+        let score = 100;
+        let issues = [];
+        let riskLevel = 'Low';
+        let status = 'Healthy';
+        let confidence = 95;
 
-            <a href="#" class="footer-bottom-link">Privacy Policy</a>
-          </div>
-        </div>
+        // Engine temperature analysis
+        if (data.engineTemp > 100) {
+          score -= 25;
+          issues.push({
+            task: 'Check cooling system - engine overheating detected',
+            priority: 'high',
+            icon: '🌡️'
+          });
+        } else if (data.engineTemp > 90) {
+          score -= 10;
+          issues.push({
+            task: 'Monitor engine temperature - running warm',
+            priority: 'medium',
+            icon: '🌡️'
+          });
+        }
 
-        <p class="copyright">
-          &copy; 2022 codewithsadee, All Rights Reserved
-        </p>
+        // Battery voltage analysis
+        if (data.batteryVoltage < 12.0) {
+          score -= 20;
+          issues.push({
+            task: 'Replace battery - voltage critically low',
+            priority: 'high',
+            icon: '🔋'
+          });
+        } else if (data.batteryVoltage < 12.4) {
+          score -= 10;
+          issues.push({
+            task: 'Check battery health - voltage below optimal',
+            priority: 'medium',
+            icon: '🔋'
+          });
+        }
 
-      </div>
+        // Oil level analysis
+        if (data.oilLevel < 30) {
+          score -= 30;
+          issues.push({
+            task: 'Add engine oil immediately - critically low',
+            priority: 'high',
+            icon: '🛢️'
+          });
+        } else if (data.oilLevel < 50) {
+          score -= 15;
+          issues.push({
+            task: 'Schedule oil change - level below recommended',
+            priority: 'medium',
+            icon: '🛢️'
+          });
+        }
 
-      <img src="./assets/images/footer-shape-1.png" width="245" height="165" loading="lazy" alt="shape"
-        class="shape shape-1">
+        // Tire pressure analysis
+        if (data.tirePressure < 25 || data.tirePressure > 40) {
+          score -= 15;
+          issues.push({
+            task: 'Adjust tire pressure to manufacturer specifications',
+            priority: 'medium',
+            icon: '🚗'
+          });
+        }
 
-      <img src="./assets/images/footer-shape-2.png" width="138" height="316" loading="lazy" alt="shape"
-        class="shape shape-2">
+        // Determine overall status
+        if (score >= 85) {
+          status = 'Healthy';
+          riskLevel = 'Low';
+          confidence = 95;
+        } else if (score >= 70) {
+          status = 'Good';
+          riskLevel = 'Low';
+          confidence = 88;
+        } else if (score >= 50) {
+          status = 'Fair';
+          riskLevel = 'Medium';
+          confidence = 82;
+        } else {
+          status = 'Poor';
+          riskLevel = 'High';
+          confidence = 78;
+        }
 
-      <img src="./assets/images/footer-shape-3.png" width="346" height="92" loading="lazy" alt="shape"
-        class="shape shape-3">
+        // Add routine maintenance if no issues
+        if (issues.length === 0) {
+          issues.push({
+            task: 'Regular maintenance - all systems normal',
+            priority: 'low',
+            icon: '✅'
+          });
+        }
 
-    </div>
-  </footer>
+        return {
+          score: Math.max(score, 0),
+          status,
+          riskLevel,
+          confidence,
+          issues,
+          nextService: Math.max(5000 - (100 - score) * 50, 500),
+          estimatedCost: Math.max((100 - score) * 10, 0)
+        };
+      }
 
+      displayResults(diagnosis) {
+        // Update health status
+        document.getElementById('healthStatus').textContent = diagnosis.status;
+        document.getElementById('confidence').textContent = `Confidence: ${diagnosis.confidence}%`;
+        
+        // Update status description
+        const descriptions = {
+          'Healthy': 'Your vehicle is in excellent condition with all systems operating within normal parameters.',
+          'Good': 'Your vehicle is in good condition with minor issues that should be addressed soon.',
+          'Fair': 'Your vehicle has some issues that require attention to prevent further problems.',
+          'Poor': 'Your vehicle has serious issues that need immediate attention.'
+        };
+        document.getElementById('statusDescription').textContent = descriptions[diagnosis.status];
 
+        // Update metrics
+        document.getElementById('overallScore').textContent = Math.round(diagnosis.score);
+        document.getElementById('riskLevel').textContent = diagnosis.riskLevel;
+        document.getElementById('nextService').textContent = diagnosis.nextService.toLocaleString();
+        document.getElementById('estimatedCost').textContent = `$${diagnosis.estimatedCost}`;
 
+        // Update result card styling based on status
+        const resultCard = document.querySelector('.result-card');
+        const resultIcon = document.querySelector('.result-icon');
+        
+        if (diagnosis.status === 'Healthy') {
+          resultCard.style.background = 'linear-gradient(135deg, #f0f9ff, #e0f2fe)';
+          resultCard.style.borderColor = '#0284c7';
+          resultIcon.innerHTML = '✅';
+          resultIcon.style.background = '#10b981';
+        } else if (diagnosis.status === 'Good') {
+          resultCard.style.background = 'linear-gradient(135deg, #f0fdf4, #dcfce7)';
+          resultCard.style.borderColor = '#16a34a';
+          resultIcon.innerHTML = '👍';
+          resultIcon.style.background = '#16a34a';
+        } else if (diagnosis.status === 'Fair') {
+          resultCard.style.background = 'linear-gradient(135deg, #fffbeb, #fef3c7)';
+          resultCard.style.borderColor = '#f59e0b';
+          resultIcon.innerHTML = '⚠️';
+          resultIcon.style.background = '#f59e0b';
+        } else {
+          resultCard.style.background = 'linear-gradient(135deg, #fef2f2, #fecaca)';
+          resultCard.style.borderColor = '#ef4444';
+          resultIcon.innerHTML = '❌';
+          resultIcon.style.background = '#ef4444';
+        }
 
+        // Update maintenance list
+        const maintenanceList = document.getElementById('maintenanceList');
+        maintenanceList.innerHTML = '';
+        
+        diagnosis.issues.forEach(issue => {
+          const li = document.createElement('li');
+          li.className = 'maintenance-item';
+          li.innerHTML = `
+            <div class="maintenance-icon">${issue.icon}</div>
+            <div class="maintenance-content">
+              <div class="maintenance-task">${issue.task}</div>
+              <div class="maintenance-priority priority-${issue.priority}">
+                Priority: ${issue.priority.charAt(0).toUpperCase() + issue.priority.slice(1)}
+              </div>
+            </div>
+          `;
+          maintenanceList.appendChild(li);
+        });
 
-  <!-- 
-    - custom js link
-  -->
-  <script src="./assets/js/script.js"></script>
+        this.resultsSection.classList.remove('hidden');
+        this.resultsSection.scrollIntoView({ behavior: 'smooth' });
+      }
 
-  <!-- 
-    - ionicon link
-  -->
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+      showLoading() {
+        this.loading.classList.add('show');
+        this.predictBtn.disabled = true;
+        this.resultsSection.classList.add('hidden');
+      }
 
+      hideLoading() {
+        this.loading.classList.remove('show');
+        this.predictBtn.disabled = false;
+      }
+    }
+
+    // Initialize the application
+    document.addEventListener('DOMContentLoaded', () => {
+      new VehicleDiagnostics();
+    });
+
+    // Add some sample data for demo
+    document.addEventListener('DOMContentLoaded', () => {
+      const inputs = {
+        engineTemp: '90',
+        batteryVoltage: '12.5',
+        oilLevel: '70',
+        tirePressure: '32'
+      };
+
+      Object.entries(inputs).forEach(([key, value]) => {
+        const input = document.getElementById(key);
+        if (input) {
+          input.value = value;
+        }
+      });
+    });
+  </script>
 </body>
 
 </html>
